@@ -59,11 +59,13 @@ app.get('/callback', function(req, res){
 
     console.log("/callback 호출");
 
+    state = randomstring.generate();
     var code = req.query.code;
     var form_data = qs.stringify({
         grant_type: 'authorization_code',
         code: code,
-        redirect_uri: client.redirect_uris[0]
+        redirect_uri: client.redirect_uris[0],
+        state: state
     });
 
     var headers = {
