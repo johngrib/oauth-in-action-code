@@ -45,9 +45,7 @@ app.get('/', function (req, res) {
 
 app.get('/authorize', function(req, res){
 
-	/*
-	 * Send the user to the authorization server
-	 */
+    console.log("/authorize 호출");
     var authorizeUrl = buildUrl(authServer.authorizationEndpoint, {
         response_type: 'code',
         client_id: client.client_id,
@@ -59,9 +57,8 @@ app.get('/authorize', function(req, res){
 
 app.get('/callback', function(req, res){
 
-	/*
-	 * Parse the response from the authorization server and get a token
-	 */
+    console.log("/callback 호출");
+
     var code = req.query.code;
     var form_data = qs.stringify({
         grant_type: 'authorization_code',
